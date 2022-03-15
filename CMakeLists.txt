@@ -4,4 +4,4 @@ project ("jsonhpp")
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable (jsonhpp "main.cpp" "jsonhpp.hpp")
+add_executable (jsonhpp "main.cpp" "json.hpp")

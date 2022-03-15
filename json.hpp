@@ -840,6 +840,11 @@ namespace jsonhpp
 		}
 
 	public:
+		value( bool val )
+		{
+			_element = boolean_t( val );
+		}
+
 		value( float val )
 		{
 			_element = number_t( val );
@@ -1737,6 +1742,13 @@ namespace jsonhpp
 	static void read( jsonhpp::document & doc, const char * json )
 	{
 		jsonhpp::istream_wrapper< char * > wrapper( json, std::strlen( json ) );
+
+		read( doc, wrapper );
+	}
+
+	static void read( jsonhpp::document & doc, std::string_view json )
+	{
+		jsonhpp::istream_wrapper< char * > wrapper( json.data(), json.size() );
 
 		read( doc, wrapper );
 	}

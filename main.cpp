@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "jsonhpp.hpp"
+#include "json.hpp"
 
 using namespace std;
 
@@ -28,6 +28,24 @@ int main()
 )";
 
 	{
+		jsonhpp::document doc = {
+			"object", {
+				"array", { nullptr, "string", 123456, 654.321, true, false },
+				"null", nullptr,
+				"string", "string_string",
+				"int", 123456,
+				"float", 654.321,
+				"bool_true", true,
+				"bool_false", false
+			}
+		};
+
+		std::cout << std::endl;
+		jsonhpp::write( doc, std::cout, 4 );
+		std::cout << std::endl;
+	}
+
+	{
 		jsonhpp::document doc;
 		jsonhpp::read( doc, json );
 
@@ -39,9 +57,8 @@ int main()
 		std::cout << std::endl;
 		std::cout << std::endl;
 		jsonhpp::write( doc, std::cout );
+		std::cout << std::endl;
 	}
-
-
 
 	{
 		jsonhpp::document doc;
@@ -63,6 +80,7 @@ int main()
 		std::string str;
 		jsonhpp::write( doc, str, 4 );
 		std::cout << str << std::endl;
+		std::cout << std::endl;
 	}
 
 	return 0;
